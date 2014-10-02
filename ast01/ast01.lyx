@@ -143,7 +143,7 @@ Let
 \end_inset
 
 : 
-\begin_inset Formula $R_{3}=1_{A}\cup\{(a,b),(b,c),(b,c),(c,b),(a,c),(c,a)\}$
+\begin_inset Formula $R_{3}=1_{A}\cup\{(a,b),(b,a),(b,c),(c,b),(a,c),(c,a)\}$
 \end_inset
 
 
@@ -1125,8 +1125,16 @@ Relation is antisymmetric if
 \[
 \left\{ \begin{array}{c}
 x+5\sqrt{n}=y\\
-y+5\sqrt{n}=x
-\end{array}\right.\Rightarrow x-y=y-x\Rightarrow2x=2y\Rightarrow x=y
+y+5\sqrt{m}=x
+\end{array}\right.\Rightarrow x+5\sqrt{n}+5\sqrt{m}=x\Rightarrow\sqrt{n}+\sqrt{m}=0\Rightarrow n=m=0\Rightarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Rightarrow x+5\sqrt{n}-y-5\sqrt{m}=y-x\Rightarrow2x=2y\Rightarrow x=y
 \]
 
 \end_inset
@@ -1176,21 +1184,33 @@ Relation is transitive if
 \[
 \left\{ \begin{array}{c}
 x+5\sqrt{n}=y\\
-y+5\sqrt{n}=z
-\end{array}\right.\Rightarrow x+10\sqrt{n}=z\Rightarrow x+5\sqrt{4n}=z
+y+5\sqrt{m}=z
+\end{array}\right.\Rightarrow x+5\sqrt{n}+5\sqrt{m}=z\Rightarrow x+5\sqrt{(\sqrt{n}+\sqrt{m})^{2}}=z\Rightarrow
 \]
 
 \end_inset
 
-Because we know that 
-\begin_inset Formula $n\in\mathbb{Q}$
+
+\begin_inset Formula 
+\[
+\Rightarrow x+5\sqrt{n+m+2\sqrt{nm}}=z
+\]
+
 \end_inset
 
-, we can see that 
-\begin_inset Formula $4n\in\mathbb{Q}$
+We can see that 
+\begin_inset Formula $\sqrt{n}=\frac{y-x}{5}\in\mathbb{Q}$
 \end_inset
 
- as well.
+ and that 
+\begin_inset Formula $\sqrt{m}=\frac{z-y}{5}\in\mathbb{Q}$
+\end_inset
+
+, so 
+\begin_inset Formula $\sqrt{nm}\in\mathbb{Q}$
+\end_inset
+
+.
  Thus, we have a relation between 
 \begin_inset Formula $x$
 \end_inset
