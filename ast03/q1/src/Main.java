@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        /*
         Scanner testfile = new Scanner(new File("testfile"));
 
         NFA nfa = new NFA(testfile);
@@ -19,7 +18,6 @@ public class Main {
         System.out.println(dfa.getTable(7));
         System.out.println(dfa.getMatchingTable(15));
         System.out.println(dfa.getGrail());
-        */
 
         Scanner testfile_2 = new Scanner(new File("testfile_2"));
 
