@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DFA extends Automaton {
-    private final int COLUMN_WIDTH = 15;
 
     public DFA() {
         super();
@@ -32,7 +31,7 @@ public class DFA extends Automaton {
         return result;
     }
 
-    public String getTable() {
+    public String getTable(int col_width) {
         String result = "";
 
         for (int i = 0; i < all.size(); i++) {
@@ -41,30 +40,31 @@ public class DFA extends Automaton {
         }
 
         result += "|";
-        result += addSpaces("", COLUMN_WIDTH);
+        result += addSpaces("", col_width);
         result += "|";
-        for (int i = 0; i < symbols.size(); i++) {
-            result += addSpaces(symbols.get(i) + "    ", COLUMN_WIDTH);
+        for (String symbol : symbols) {
+            result += addSpaces(symbol + " ", col_width);
             result += "|";
         }
         result += "\n";
 
-        for (int i = 0; i < all.size(); i++) {
-            State s = all.get(i);
-            String st = addSpaces(s.toString(), 5);
+        for (State s : all) {
+            String state;
+
+            state = addSpaces(s.toString() + " ", col_width - 4);
             if (s.isAccepting()) {
-                st = "*" + st;
+                state = "*" + state;
             }
             if (s.isInitial()) {
-                st = "->" + st;
+                state = "->" + state;
             }
+            state = addSpaces(state, col_width);
 
-            result += "|";
-            result += addSpaces(st + " ", COLUMN_WIDTH) + "|";
+            result += "|" + state + "|";
 
-            for (int j = 0; j < symbols.size(); j++) {
-                State end = getState(getTransitions(s, symbols.get(j)).get(0).getTo());
-                result += addSpaces(end.toString() + "   ", COLUMN_WIDTH) + "|";
+            for (String symbol : symbols) {
+                State end = getState(getTransitions(s, symbol).get(0).getTo());
+                result += addSpaces(end.toString() + " ", col_width) + "|";
             }
 
             result += "\n";
