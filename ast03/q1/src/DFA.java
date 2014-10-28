@@ -36,7 +36,7 @@ public class DFA extends Automaton {
 
         for (int i = 0; i < all.size(); i++) {
             State s = all.get(i);
-            s.setAlias("q_" + i);
+            s.setAlias("" + i);
         }
 
         result += "|";
@@ -78,7 +78,7 @@ public class DFA extends Automaton {
 
         for (int i = 0; i < all.size(); i++) {
             State s = all.get(i);
-            s.setAlias("q_" + i);
+            s.setAlias("" + i);
         }
 
         for (State s : initial) {
