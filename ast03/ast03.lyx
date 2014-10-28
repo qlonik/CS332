@@ -169,6 +169,10 @@ State: [8]
 	EPSILON-Closure: [8]
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -279,6 +283,10 @@ status open
 |            [] |   8 |
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 Here empty array is a dead state.
@@ -360,10 +368,10 @@ aabbaab
 bbaabba
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
+\end_layout
 
-\begin_inset Newline newline
 \end_inset
 
 NFA results:
@@ -508,13 +516,13 @@ not accepted
 
 \begin_layout Plain Layout
 
-not accepted 
+not accepted
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
+\end_layout
 
-\begin_inset Newline newline
 \end_inset
 
 DFA results:
@@ -659,7 +667,11 @@ not accepted
 
 \begin_layout Plain Layout
 
-not accepted 
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -797,6 +809,10 @@ State: [11]
 \begin_layout Plain Layout
 
 	EPSILON-Closure: [11]
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1099,6 +1115,10 @@ status open
 |          [1, 2, 4, 5, 8, 9, 10] |  27 |
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -1175,10 +1195,10 @@ bbaaa
 bbaaaa
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
+\end_layout
 
-\begin_inset Newline newline
 \end_inset
 
 NFA results
@@ -1313,13 +1333,13 @@ accepted
 
 \begin_layout Plain Layout
 
-not accepted 
+not accepted
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
+\end_layout
 
-\begin_inset Newline newline
 \end_inset
 
 DFA results
@@ -1454,7 +1474,11 @@ accepted
 
 \begin_layout Plain Layout
 
-accepted 
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
