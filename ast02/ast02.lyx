@@ -1,0 +1,3771 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning,arrows}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Enumerate
+Question 1
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Base case: when length of string is 0: 
+\begin_inset Formula $\bar{\delta}(q,\epsilon)=q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Assume this is true for length of the word 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Assume we have word 
+\begin_inset Formula $\bar{w}_{n}=w_{1}\dots w_{n-1}w_{n}$
+\end_inset
+
+ So, 
+\begin_inset Formula $\bar{\delta}(q,\bar{w}_{n})=\bar{\delta}(\delta(q,w_{1}),w_{2}\dots w_{n})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Lets look at the word with length 
+\begin_inset Formula $n+1$
+\end_inset
+
+: 
+\begin_inset Formula $\bar{w}_{n+1}=w_{1}w_{2}\dots w_{n-1}w_{n}w_{n+1}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\bar{\delta}(q,\bar{w}_{n+1})=\delta(\bar{\delta}(q,\bar{w}_{n}),w_{n+1})=\delta(\bar{\delta}(\delta(q,w_{1}),w_{2}\dots w_{n}),w_{n+1})=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\bar{\delta}(\delta(q,w_{1}),w_{2}\dots w_{n}w_{n+1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We proved that for the word of length 
+\begin_inset Formula $n+1$
+\end_inset
+
+ this equation is also true.
+ So, for any state 
+\begin_inset Formula $q$
+\end_inset
+
+, string 
+\begin_inset Formula $x$
+\end_inset
+
+, and input symbol 
+\begin_inset Formula $a$
+\end_inset
+
+: 
+\begin_inset Formula $\bar{\delta}(q,ax)=\bar{\delta}(\delta(q,a),x)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Question 2
+\begin_inset Newline newline
+\end_inset
+
+Give DFA that accepts language: 
+\begin_inset Formula $L=\lbrace101x01010\mid x\in\lbrace0,1\rbrace^{*}\rbrace$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+We have to have 
+\begin_inset Formula $101$
+\end_inset
+
+ in the beginning, or else we get into dead state.
+ Then we carefully watch if we got 
+\begin_inset Formula $01010$
+\end_inset
+
+ string.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->, >=stealth', shorten >= 1pt, node distance = 1.7cm,
+ on grid, auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (0) [state, initial] {0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (1) [state, right = of 0] {1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (2) [state, right = of 1] {2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (d) [state, below = of 1] {d};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (3) [state, below right = of 2] {3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (4) [state, above right = of 3] {4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (5) [state, right = of 4] {5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (6) [state, below right = of 5] {6};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (7) [state, below left = of 6] {7};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (8) [state, accepting, left = of 7] {8};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path
+\end_layout
+
+\begin_layout Plain Layout
+
+	(0) edge node [near start, swap] {0} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [near start] {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(1) edge node [near start] {0} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [near start] {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2) edge node [near start] {0} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [near start] {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(d) edge [loop below] node {0,1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(3) edge node [near start] {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [out = 230, in = 200, loop] node {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(4) edge [out = 140, in = 110, loop] node {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [near start] {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(5) edge node [near start] {0} (6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [near start] {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(6) edge node [near start] {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [near start] {1} (7)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(7) edge node [near start] {0} (8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [near start, swap] {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(8) edge node {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [near start] {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ 
+.
+\lang english
+/fmexec q2.grail 101
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ 
+.
+\lang english
+/fmexec q2.grail 101010
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ 
+.
+\lang english
+/fmexec q2.grail 10101010
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ 
+.
+\lang english
+/fmexec q2.grail 1011001010
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ 
+.
+\lang english
+/fmexec q2.grail 10111101010
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ 
+.
+\lang english
+/fmexec q2.grail 101111011001010
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q2.grail 1011110110010110
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q2.grail 1011110110010110101
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q2.grail 10111101100101101010
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Question 3
+\begin_inset Newline newline
+\end_inset
+
+Give DFAs accepting the following languages over the alphabet 
+\begin_inset Formula $\lbrace0,1\rbrace$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The set of all strings consisting of alternating groups of 
+\begin_inset Formula $00$
+\end_inset
+
+ and 
+\begin_inset Formula $011$
+\end_inset
+
+ (
+\begin_inset Formula $00$
+\end_inset
+
+ and 
+\begin_inset Formula $011$
+\end_inset
+
+ alternates)
+\begin_inset Newline newline
+\end_inset
+
+We need to have at least one group 
+\begin_inset Formula $00011$
+\end_inset
+
+ or 
+\begin_inset Formula $01100$
+\end_inset
+
+ and after that we can add as many alternating groups as we want.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->, >=stealth', shorten >= 1pt, node distance = 1.7cm,
+ on grid, auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (d) [state, right = of 1] {d};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (0) [state, initial] {0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (1) [state, right = of 0] {1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (2) [state, above = of 1] {2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (3) [state, right = of 2] {3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (4) [state, right = of 3] {4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (5) [state, accepting, right = of 4] {5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (6) [state, right = of 5] {6};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (7) [state, accepting, right = of 6] {7};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (8) [state, below = of 1] {8};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (9) [state, right = of 8] {9};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (10) [state, right = of 9] {10};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (11) [state, accepting, right = of 10] {11};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (12) [state, right = of 11] {12};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (13) [state, right = of 12] {13};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (14) [state, accepting, above = of 13] {14};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path[near start]
+\end_layout
+
+\begin_layout Plain Layout
+
+	(d) edge [loop left] node [above] {0,1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(0) edge node {0} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend right] node [swap] {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(1) edge node {0} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (8)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2) edge node {0} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(3) edge node {1} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {0} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(4) edge node {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {0} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(5) edge node {0} (6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 10] node {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(6) edge node {0} (7)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 10] node {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(7) edge [bend right] node [swap] {0} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 10] node {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(8) edge node [swap] {1} (9)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {0} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(9) edge node [swap] {0} (10)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(10) edge node [swap] {0} (11)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(11) edge node [swap] {0} (12)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend right = 10] node [swap] {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(12) edge node [swap] {1} (13)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend right = 10] node [swap] {0} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(13) edge node [swap] {1} (14)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend right = 10] node [swap] {0} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(14) edge [out = 180, in = 45] node {0} (10)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 00
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 011
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 00011
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 0001100
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 00011011
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 011011
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 0110000
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 01100011
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 0110001100
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.a.grail 01100011011
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The set of all strings whose forth symbol from the right end is a 0
+\begin_inset Newline newline
+\end_inset
+
+We start with the state 
+\begin_inset Formula $1111$
+\end_inset
+
+ because we do not have zeroes.
+ Then after appending 
+\begin_inset Formula $0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+, we eliminate first digit from new group of five digits and we see in which
+ state we end up.
+ If first of 4 digits is zero, we are in the final state.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->, >=stealth', shorten >= 1pt, node distance = 2.3cm,
+ on grid, auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (15) [state, initial above] {1111};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (14) [state, below = of 15] {1110};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (13) [state, right = of 14] {1101};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (12) [state, below = of 13] {1100};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (11) [state, below right = of 12] {1011}; %below right
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (10) [state, below = of 11] {1010};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (9) [state, below = of 10] {1001};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (8) [state, below left = of 9] {1000};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (0) [state, accepting, left = of 15] {0000};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (1) [state, accepting, below = of 0] {0001};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (2) [state, accepting, left = of 1] {0010};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (3) [state, accepting, below = of 2] {0011};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (4) [state, accepting, below left = of 3] {0100}; %below left
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (5) [state, accepting, below = of 4] {0101};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (6) [state, accepting, below = of 5] {0110};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (7) [state, accepting, below right = of 6] {0111};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path[very near start]
+\end_layout
+
+\begin_layout Plain Layout
+
+	(15) edge node {0} (14)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [loop right] node {1} (15)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(14) edge node [swap] {0} (12)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (13)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(13) edge [bend left = 45] node {0} (10)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (11)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(12) edge node {0} (8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [out = 270, in = 125] node [swap] {1} (9)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(11) edge node [swap] {0} (6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (7)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(10) edge node [swap] {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(9) edge node {0} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(8) edge node [swap] {0} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(7) edge node {0} (14)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (15)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(6) edge node [swap] {0} (12)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (13)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(5) edge node [swap] {0} (10)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (11)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(4) edge node [swap] {0} (8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (9)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(3) edge [out = 270, in = 55] node [swap] {0} (6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (7)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2) edge node {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend right = 45] node [swap] {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(1) edge node [swap] {0} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(0) edge [loop left] node {0} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+	;101
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 0000
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 0111
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 0101
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 1000
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 1001
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 1101
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 11011
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 10011
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 100110
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.b.grail 110110
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The set of strings that either begin, or end (or both) with 101
+\begin_inset Newline newline
+\end_inset
+
+If we start from 
+\begin_inset Formula $101$
+\end_inset
+
+ then we do not care what will be after it, because it will satisfy the
+ language.
+\begin_inset Newline newline
+\end_inset
+
+If we start with 
+\begin_inset Formula $0$
+\end_inset
+
+ we can have as many zeroes, unless we have first 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ After first one we can have how many ones as we want, if after that we
+ hit 
+\begin_inset Formula $01$
+\end_inset
+
+ then we found the solution, if we have 
+\begin_inset Formula $00$
+\end_inset
+
+ we need to restart to search for 
+\begin_inset Formula $101$
+\end_inset
+
+ group in the end.
+ If we are at final state, we can have either 
+\begin_inset Formula $0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ In the case of zero, we already have one, so we just need to step once
+ back.
+ In the case of 1, we need to restart to search for a group 
+\begin_inset Formula $101$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->, >=stealth', shorten >= 1pt, node distance = 2cm,
+ on grid, auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (0) [state, initial] {0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (1) [state, above right = of 0] {1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (2) [state, right = of 1] {2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (3) [state, accepting, right = of 2] {3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (4) [state, below right = of 0] {4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (5) [state, right = of 4] {5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (6) [state, right = of 5] {6};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (7) [state, accepting, right = of 6] {7};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path[near start]
+\end_layout
+
+\begin_layout Plain Layout
+
+	(0) edge node {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(1) edge node {0} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2) edge node {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(3) edge [loop right] node {0,1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(4) edge [loop below] node {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(5) edge node {0} (6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [loop below] node {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(6) edge [bend right = 45] node [swap] {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (7)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(7) edge [bend right = 45] node [swap] {0} (6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 45] node {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 101
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 10110101
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 110
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 1101
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 0010
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 110101
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 101101
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 101011001
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 10011001
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q3.c.grail 1001100101
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The set of strings such that the number of 0's is divisible by five, and
+ the number of 1's is divisible by seven.
+\begin_inset Newline newline
+\end_inset
+
+We progress state on each addition of 
+\begin_inset Formula $0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ This is very similar to example in class.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->, >=stealth', shorten >= 1pt, node distance = 1.7cm,
+ on grid, auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (0) [state, initial, accepting] {0,0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (1) [state, right = of 0] {0,1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (2) [state, right = of 1] {0,2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (3) [state, right = of 2] {0,3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (4) [state, right = of 3] {0,4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (5) [state, right = of 4] {0,5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (6) [state, right = of 5] {0,6};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (7) [state, below = of 0] {1,0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (8) [state, right = of 7] {1,1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (9) [state, right = of 8] {1,2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (10) [state, right = of 9] {1,3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (11) [state, right = of 10] {1,4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (12) [state, right = of 11] {1,5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (13) [state, right = of 12] {1,6};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (14) [state, below = of 7] {2,0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (15) [state, right = of 14] {2,1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (16) [state, right = of 15] {2,2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (17) [state, right = of 16] {2,3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (18) [state, right = of 17] {2,4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (19) [state, right = of 18] {2,5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (20) [state, right = of 19] {2,6};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (21) [state, below = of 14] {3,0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (22) [state, right = of 21] {3,1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (23) [state, right = of 22] {3,2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (24) [state, right = of 23] {3,3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (25) [state, right = of 24] {3,4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (26) [state, right = of 25] {3,5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (27) [state, right = of 26] {3,6};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (28) [state, below = of 21] {4,0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (29) [state, right = of 28] {4,1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (30) [state, right = of 29] {4,2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (31) [state, right = of 30] {4,3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (32) [state, right = of 31] {4,4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (33) [state, right = of 32] {4,5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (34) [state, right = of 33] {4,6};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path[near start]
+\end_layout
+
+\begin_layout Plain Layout
+
+	(0) edge node {0} (7)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(1) edge node {0} (8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2) edge node {0} (9)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(3) edge node {0} (10)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(4) edge node {0} (11)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(5) edge node {0} (12)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (6)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(6) edge node {0} (13)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 30, looseness = 0.5] node {1} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(7) edge node {0} (14)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (8)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(8) edge node {0} (15)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (9)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(9) edge node {0} (16)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (10)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(10) edge node {0} (17)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (11)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(11) edge node {0} (18)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (12)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(12) edge node {0} (19)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (13)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(13) edge node {0} (20)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 30, looseness = 0.5] node {1} (7)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(14) edge node {0} (21)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (15)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(15) edge node {0} (22)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (16)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(16) edge node {0} (23)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (17)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(17) edge node {0} (24)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (18)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(18) edge node {0} (25)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (19)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(19) edge node {0} (26)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (20)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(20) edge node {0} (27)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 30, looseness = 0.5] node {1} (14)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(21) edge node {0} (28)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (22)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(22) edge node {0} (29)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (23)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(23) edge node {0} (30)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (24)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(24) edge node {0} (31)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (25)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(25) edge node {0} (32)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (26)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(26) edge node {0} (33)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (27)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(27) edge node {0} (34)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 30, looseness = 0.5] node {1} (21)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(28) edge [bend left = 30, looseness = 0.5] node {0} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (29)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(29) edge [bend left = 30, looseness = 0.5] node {0} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (30)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(30) edge [bend left = 30, looseness = 0.5] node {0} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (31)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(31) edge [bend left = 30, looseness = 0.5] node {0} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (32)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(32) edge [bend left = 30, looseness = 0.5] node {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (33)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(33) edge [bend left = 30, looseness = 0.5] node {0} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (34)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(34) edge [bend left = 30, looseness = 0.5] node {0} (6)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge [bend left = 30, looseness = 0.5] node {1} (28)
+\end_layout
+
+\begin_layout Plain Layout
+
+	;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Question 4
+\begin_inset Newline newline
+\end_inset
+
+Give DFA's accepting the following languages over the alphabet 
+\begin_inset Formula $\sum=\lbrace0,1,3,4\rbrace$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The set of all strings beginning with a 1 or 3, that, when the string is
+ interpreted as an integer in base 7, is a multiple of 6 plus 5.
+\begin_inset Newline newline
+\end_inset
+
+Very similar to example in class.
+ Proceed the same way.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->, >=stealth', shorten >= 1pt, node distance = 3cm,
+ on grid, auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (s) [state, initial] {s};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (d) [state, below = of s] {d};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (0) [state, above right = of s] {0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (1) [state, right = of 0] {1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (2) [state, below right = of 1] {2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (3) [state, below = of 2] {3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (4) [state, below left = of 3] {4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (5) [state, accepting, left = of 4] {5};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path[very near start]
+\end_layout
+
+\begin_layout Plain Layout
+
+	(s) edge [swap] node {0,4} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {3} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(0) edge [out = 150, in = 120, loop] node {0} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(1) edge [out = 60, in = 30, loop] node {0} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2) edge [loop right] node [above] {0} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {3} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {4} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(3) edge [loop right] node [above] {0} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(4) edge [out = 300, in = 330, loop] node [swap] {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(5) edge [out = 210, in = 240, loop] node [swap] {0} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(d) edge [loop below] node [right] {0,1,3,4} (d)
+\end_layout
+
+\begin_layout Plain Layout
+
+	;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.a.grail 14
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.a.grail 41
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.a.grail 1400
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.a.grail 4100
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.a.grail 30011
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.a.grail 2
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.a.grail 21
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.a.grail 1213
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The set of all strings that ends with an 1, or 3 and when the string is
+ interpreted in revese as an integer in base 7, is a multiple of 6 plus
+ 5.
+\begin_inset Newline newline
+\end_inset
+
+Similar to previous example, but this time we consider state 5 to be win
+ only if we got there with the last digit being 
+\begin_inset Formula $1$
+\end_inset
+
+ or 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ For that we separate state 
+\begin_inset Formula $5$
+\end_inset
+
+ into 
+\begin_inset Formula $5$
+\end_inset
+
+ and 
+\begin_inset Formula $5^{*}$
+\end_inset
+
+.
+ Where 
+\begin_inset Formula $5^{*}$
+\end_inset
+
+ is final state.
+ We can only get to 
+\begin_inset Formula $5^{*}$
+\end_inset
+
+ if we have 
+\begin_inset Formula $1$
+\end_inset
+
+ or 
+\begin_inset Formula $3$
+\end_inset
+
+ that are leading there, we are getting into 
+\begin_inset Formula $5$
+\end_inset
+
+ if we have 
+\begin_inset Formula $0$
+\end_inset
+
+ or 
+\begin_inset Formula $4$
+\end_inset
+
+ as the last digit.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->, >=stealth', shorten >= 1pt, node distance = 3cm,
+ on grid, auto]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (s) [state, initial] {s};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (0) [state, above right = of s] {0};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (1) [state, right = of 0] {1};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (2) [state, below right = of 1] {2};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (3) [state, below = of 2] {3};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (4) [state, below left = of 3] {4};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (5) [state, left = of 4] {5};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node (5s) [state, accepting, above left = of 5] {$5^*$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+path[very near start]
+\end_layout
+
+\begin_layout Plain Layout
+
+	(s) edge node {0} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(0) edge [out = 150, in = 120, loop] node {0} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(1) edge [out = 60, in = 30, loop] node {0} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(2) edge [loop right] node [above] {0} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {3} (5s)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(3) edge [loop right] node [above] {0} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {3} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(4) edge [out = 300, in = 330, loop] node [swap] {0} (4)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (5s)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {3} (1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(5) edge [out = 210, in = 240, loop] node [swap] {0} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	(5s) edge node [swap] {0} (5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {1} (0)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node {3} (2)
+\end_layout
+
+\begin_layout Plain Layout
+
+		edge node [swap] {4} (3)
+\end_layout
+
+\begin_layout Plain Layout
+
+	;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 14
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 41
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 311
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 041
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 0014
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 1103
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 11003
+\end_layout
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 2
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 12
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 211
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+[qlonik@ZENBOOK ast02]$ ./fmexec q4.b.grail 0100
+\end_layout
+
+\begin_layout Plain Layout
+not accepted
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Question 5
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Part a
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For our base case lets choose 
+\begin_inset Formula $n=0$
+\end_inset
+
+ and see the result of the equation 
+\begin_inset Formula $\bar{\delta}(q,a^{np})=q$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\bar{\delta}(q,a^{0})=\bar{\delta}(q,\epsilon)=q
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Assume that for 
+\begin_inset Formula $n=k$
+\end_inset
+
+ this equation is true.
+ So we need to prove that it is true for 
+\begin_inset Formula $n=k+1$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\bar{\delta}(q,a^{(k+1)p})=\bar{\delta}(q,a^{kp+p})=\bar{\delta}(q,a^{kp+p-1}a)=\delta(\bar{\delta}(q,a^{kp+p-1}),a)=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\bar{\delta}(q,a^{kp+p-1})+h\text{mod}p=\delta(\bar{\delta}(q,a^{kp+p-2}),a)+h\text{mod}p=\bar{\delta}(q,a^{kp+p-2})+2\cdot h\text{mod}p=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\dots=\bar{\delta}(q,a^{kp})+p\cdot h\text{mod}p=\bar{\delta}(q,a^{kp})\text{mod}p+0=\bar{\delta}(q,a^{kp})\text{mod}p=q\text{mod}p=q
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Part b
+\begin_inset Newline newline
+\end_inset
+
+We do not have final state, so our language is empty language.
+ So 
+\begin_inset Formula $\lbrace a^{p}\rbrace^{*}abb\cap L(A)=\emptyset$
+\end_inset
+
+ is always true, because 
+\begin_inset Formula $L(A)=\emptyset$
+\end_inset
+
+.
+ And because 
+\begin_inset Formula $\lbrace a^{p}\rbrace^{*}abb\subseteq L(A)$
+\end_inset
+
+ is mutually exclusive with 
+\begin_inset Formula $\lbrace a^{p}\rbrace^{*}abb\cap L(A)=\emptyset$
+\end_inset
+
+, then 
+\begin_inset Formula $\lbrace a^{p}\rbrace^{*}abb\subseteq L(A)$
+\end_inset
+
+ is always false.
+ Because we have or between those two statements, our final statement is
+ always true.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Question 6
+\begin_inset Newline newline
+\end_inset
+
+Our automaton is in final state, iff the consumed part of automaton contained
+ 
+\begin_inset Formula $3k+1$
+\end_inset
+
+ zeroes, where 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Our base case is when length of the word is zero.
+ Indeed, we can see that when we do not provide input, we stay in the same
+ state.
+\end_layout
+
+\begin_layout Enumerate
+Lets assume that all words up to length 
+\begin_inset Formula $n$
+\end_inset
+
+ are in our language.
+\end_layout
+
+\begin_layout Enumerate
+Consider now an arbitrary word 
+\begin_inset Formula $w\in\{0,1\}^{n+1}$
+\end_inset
+
+.
+ There are 3 cases:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Our word 
+\begin_inset Formula $w$
+\end_inset
+
+ contains 
+\begin_inset Formula $3n$
+\end_inset
+
+ zeroes.
+ There are two cases for the last symbol.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $w_{n}=0$
+\end_inset
+
+.
+ In this case, 
+\begin_inset Formula $w'=w_{0}\dots w_{n-1}$
+\end_inset
+
+ have 
+\begin_inset Formula $3n+2$
+\end_inset
+
+ zeroes.
+ By our hypothesis, the automaton is in the state 
+\begin_inset Formula $2$
+\end_inset
+
+ after consuming 
+\begin_inset Formula $w'$
+\end_inset
+
+.
+ Consuming 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ causes automaton to switch to state 
+\begin_inset Formula $3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $w_{n}=1$
+\end_inset
+
+.
+ In this case, 
+\begin_inset Formula $w'=w_{0}\dots w_{n-1}$
+\end_inset
+
+ have 
+\begin_inset Formula $3n$
+\end_inset
+
+ zeroes.
+ By our hypothesis, the automaton is either in the state 
+\begin_inset Formula $0$
+\end_inset
+
+ or in the state 
+\begin_inset Formula $3$
+\end_inset
+
+ after consuming 
+\begin_inset Formula $w'$
+\end_inset
+
+.
+ Consuming 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ causes automaton to stay in the same state.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Our word 
+\begin_inset Formula $w$
+\end_inset
+
+ contains 
+\begin_inset Formula $3n+1$
+\end_inset
+
+ zeroes.
+ There are two cases for the last symbol.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $w_{n}=0$
+\end_inset
+
+.
+ In this case, 
+\begin_inset Formula $w'=w_{0}\dots w_{n-1}$
+\end_inset
+
+ have 
+\begin_inset Formula $3n$
+\end_inset
+
+ zeroes.
+ By our hypothesis, the automaton is either in the state 
+\begin_inset Formula $0$
+\end_inset
+
+ or in the state 
+\begin_inset Formula $3$
+\end_inset
+
+ after consuming 
+\begin_inset Formula $w'$
+\end_inset
+
+.
+ Consuming 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ causes automaton to switch to final state 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $w_{n}=1$
+\end_inset
+
+.
+ In this case, 
+\begin_inset Formula $w'=w_{0}\dots w_{n-1}$
+\end_inset
+
+ have 
+\begin_inset Formula $3n+1$
+\end_inset
+
+ zeroes.
+ By our hypothesis, the automaton is in the final state 
+\begin_inset Formula $1$
+\end_inset
+
+ after consuming 
+\begin_inset Formula $w'$
+\end_inset
+
+.
+ Consuming 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ causes automaton to stay in the same state.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Our word 
+\begin_inset Formula $w$
+\end_inset
+
+ contains 
+\begin_inset Formula $3n+2$
+\end_inset
+
+ zeroes.
+ There are two cases for the last symbol.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $w_{n}=0$
+\end_inset
+
+.
+ In this case, 
+\begin_inset Formula $w'=w_{0}\dots w_{n-1}$
+\end_inset
+
+ have 
+\begin_inset Formula $3n+1$
+\end_inset
+
+ zeroes.
+ By our hypothesis, the automaton is in the state 
+\begin_inset Formula $1$
+\end_inset
+
+ after consuming 
+\begin_inset Formula $w'$
+\end_inset
+
+.
+ Consuming 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ causes automaton to switch to state 
+\begin_inset Formula $2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $w_{n}=1$
+\end_inset
+
+.
+ In this case, 
+\begin_inset Formula $w'=w_{0}\dots w_{n-1}$
+\end_inset
+
+ have 
+\begin_inset Formula $3n+2$
+\end_inset
+
+ zeroes.
+ By our hypothesis, the automaton is in the state 
+\begin_inset Formula $2$
+\end_inset
+
+ after consuming 
+\begin_inset Formula $w'$
+\end_inset
+
+.
+ Consuming 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ causes automaton to switch to state 
+\begin_inset Formula $3$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+So we can see that statement holds and our language consists only of those
+ words that have 
+\begin_inset Formula $3k+1$
+\end_inset
+
+ zeroes.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Question 7
+\begin_inset Newline newline
+\end_inset
+
+Our automaton is in final state, iff the consumed part of automaton contained
+ 
+\begin_inset Formula $3k+1$
+\end_inset
+
+ consecutive zeroes or it ended with 
+\begin_inset Formula $10$
+\end_inset
+
+ group.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Our base case is when length of the word is zero.
+ Indeed, we can see that when we do not provide input, we stay in the same
+ state.
+\end_layout
+
+\begin_layout Enumerate
+Lets assume that all words up to length 
+\begin_inset Formula $n$
+\end_inset
+
+ are in our language.
+\end_layout
+
+\begin_layout Enumerate
+Consider now an arbitrary word 
+\begin_inset Formula $w\in\lbrace0,1\rbrace^{n+1}$
+\end_inset
+
+.
+ There are 7 cases.
+ Three of these cases are similar to question 6 (when word contains 
+\begin_inset Formula $3n$
+\end_inset
+
+, 
+\begin_inset Formula $3n+1$
+\end_inset
+
+, 
+\begin_inset Formula $3n+2$
+\end_inset
+
+ zeroes).
+ Other four cases:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Our word ends with 
+\begin_inset Formula $00$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Here our second last letter is 
+\begin_inset Formula $0$
+\end_inset
+
+ and last letter is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ By our hypothesis, the automaton of the length 
+\begin_inset Formula $n$
+\end_inset
+
+ is true which means, when we add one more zero, our automaton change state
+ to state 
+\begin_inset Formula $C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Our word ends with 
+\begin_inset Formula $01$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+By our hypothesis, the automaton of the length 
+\begin_inset Formula $n$
+\end_inset
+
+ is true which means we are in the final state 
+\begin_inset Formula $B$
+\end_inset
+
+, and that when we add symbol 
+\begin_inset Formula $1$
+\end_inset
+
+, our automaton stays in the same final state 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Our word ends with 
+\begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+By our hypothesis, the automaton of the length 
+\begin_inset Formula $n$
+\end_inset
+
+ is true which means after consuming second last 
+\begin_inset Formula $1$
+\end_inset
+
+ we are in the state 
+\begin_inset Formula $A$
+\end_inset
+
+, and after consuming symbol 
+\begin_inset Formula $0$
+\end_inset
+
+ we switch to final state 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Our word ends with 
+\begin_inset Formula $11$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+By our hypothesis, the automaton of the length 
+\begin_inset Formula $n$
+\end_inset
+
+ is true which means after consuming second last 
+\begin_inset Formula $1$
+\end_inset
+
+ we are in the state 
+\begin_inset Formula $A$
+\end_inset
+
+, and after consuming symbol 
+\begin_inset Formula $1$
+\end_inset
+
+ we stay in the same state 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+We can see that statement holds for word of length 
+\begin_inset Formula $n+1$
+\end_inset
+
+, which means our language consists of words that have 
+\begin_inset Formula $3k+1$
+\end_inset
+
+ consecutive zeroes or ends with group 
+\begin_inset Formula $10$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

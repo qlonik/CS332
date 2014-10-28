@@ -1,0 +1,17 @@
+[qlonik@ZENBOOK ast02]$ ../../Grail/bin/fmexec q4.a.grail 14
+accepted
+[qlonik@ZENBOOK ast02]$ ../../Grail/bin/fmexec q4.a.grail 41
+not accepted
+[qlonik@ZENBOOK ast02]$ ../../Grail/bin/fmexec q4.a.grail 1400
+accepted
+[qlonik@ZENBOOK ast02]$ ../../Grail/bin/fmexec q4.a.grail 4100
+not accepted
+[qlonik@ZENBOOK ast02]$ ../../Grail/bin/fmexec q4.a.grail 30011
+accepted
+[qlonik@ZENBOOK ast02]$ ../../Grail/bin/fmexec q4.a.grail 2
+not accepted
+[qlonik@ZENBOOK ast02]$ ../../Grail/bin/fmexec q4.a.grail 21
+not accepted
+[qlonik@ZENBOOK ast02]$ ../../Grail/bin/fmexec q4.a.grail 1213
+not accepted
+
