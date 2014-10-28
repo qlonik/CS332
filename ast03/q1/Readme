@@ -1,0 +1,10 @@
+To compile this project:
+
+javac Main.java
+
+To run this project:
+
+java Main
+
+Notes:
+Files testfile and testfile_2 has to be in the same folder as Main.class file.
