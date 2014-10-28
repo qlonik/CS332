@@ -99,4 +99,18 @@ public class DFA extends Automaton {
 
         return result;
     }
+
+    public String getMatchingTable(int col_width) {
+        String result = "";
+
+        for (State s : all) {
+            result += "|";
+            result += addSpaces(s.getStates().toString() + " ", col_width);
+            result += "|";
+            result += " " + addSpaces(s.getAlias() + " ", 4);
+            result += "|\n";
+        }
+
+        return result;
+    }
 }
