@@ -305,223 +305,52 @@ status open
 
 \begin_layout Plain Layout
 
-a
+a - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-b
+b - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-aa
+aa - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-bb
+bb - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-ab
+ab - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-ba
+ba - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-abba
+abba - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-baab
+baab - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-abab
+abab - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-baba
-\end_layout
-
-\begin_layout Plain Layout
-
-aaaabba
-\end_layout
-
-\begin_layout Plain Layout
-
-bbbbaab
-\end_layout
-
-\begin_layout Plain Layout
-
-aabbaab
-\end_layout
-
-\begin_layout Plain Layout
-
-bbaabba
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-NFA results:
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile a
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile b
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile aa
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile bb
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile ab
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile ba
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile abba
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile baab
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile abab
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile baba
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile aaaabba
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile bbbbaab
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile aabbaab
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile bbaabba
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
+baba - should not accept
 \end_layout
 
 \begin_layout Plain Layout
@@ -628,46 +457,6 @@ not accepted
 \begin_layout Plain Layout
 
 [qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_dfa baba
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_dfa aaaabba
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_dfa bbbbaab
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_dfa aabbaab
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_dfa bbaabba
 \end_layout
 
 \begin_layout Plain Layout
@@ -1137,208 +926,67 @@ status open
 
 \begin_layout Plain Layout
 
-a
+a - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-b
+b - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-aa
+aa - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-bb
+bb - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-ab
+ab - should not accept
 \end_layout
 
 \begin_layout Plain Layout
 
-ba
+ba - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-abaa
+abaa - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-abbaa
+abbaa - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-abbbaa
+abbbaa - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-bbabaa
+bbabaa - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-bbabaaa
+bbabaaa - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-bbaaa
+bbaaa - should accept
 \end_layout
 
 \begin_layout Plain Layout
 
-bbaaaa
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-NFA results
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 a
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 b
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 aa
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 bb
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 ab
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 ba
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 abaa
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 abbaa
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 abbbaa
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 bbabaa
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 bbabaaa
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 bbaaa
-\end_layout
-
-\begin_layout Plain Layout
-
-accepted
-\end_layout
-
-\begin_layout Plain Layout
-
-[qlonik@ZENBOOK q1]$ ../../../Grail/bin/fmexec testfile_2 bbaaaa
-\end_layout
-
-\begin_layout Plain Layout
-
-not accepted
+bbaaaa - should accept
 \end_layout
 
 \begin_layout Plain Layout
